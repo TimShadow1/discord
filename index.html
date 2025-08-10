@@ -5,9 +5,9 @@
     <style>
         body {
             margin: 0;
-            background: linear-gradient(45deg, #0000ff, #0d0d0d);
+            background: linear-gradient(45deg, #1e1eff, #1e1e1e);
             background-size: 400% 400%;
-            animation: gradient 10s ease infinite;
+            animation: gradient 15s ease infinite;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -15,51 +15,107 @@
             font-family: Arial, sans-serif;
             color: white;
             text-align: center;
+            overflow: hidden;
         }
         
+        /* Анимация градиента */
         @keyframes gradient {
-            0% { background-position: 100% 0%; }
-            50% { background-position: 0% 100%; }
-            100% { background-position: 100% 0%; }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
+        /* Стиль сообщения */
         .message {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(30, 30, 30, 0.7);
             padding: 30px;
             border-radius: 15px;
-            backdrop-filter: blur(5px);
-            animation: textGlow 2s infinite alternate;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 255, 0.3);
+            z-index: 10;
         }
         
         h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 15px rgba(100, 149, 237, 0.8);
         }
         
         a {
-            color: #4fc3f7;
+            color: cornflowerblue;
             text-decoration: none;
             font-weight: bold;
+            transition: 0.3s;
         }
         
-        @keyframes textGlow {
-            from { text-shadow: 0 0 5px #fff; }
-            to { text-shadow: 0 0 15px #4fc3f7; }
+        a:hover {
+            text-shadow: 0 0 10px cornflowerblue;
+        }
+        
+        /* Звёзды */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
 <body>
+    <!-- Звёзды -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Сообщение -->
     <div class="message">
-        <h1>Wait 1 second...</h1>
-        <p>We're redirecting you to my <b>Discord server</b>!</p>
-        <p>If nothing happens, <a href="https://discord.com/invite/gavwVwNNDC">CLICK HERE</a>.</p>
+        <h1>Dollar Hub Script</h1>
+        <p>Redirecting to Discord...</p>
+        <p>Join here: <a href="https://discord.gg/gavwVwNNDC">discord.gg/gavwVwNNDC</a></p>
     </div>
     
     <script>
+        // Создание звёзд
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            // Случайные параметры
+            const size = Math.random() * 3;
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const delay = Math.random() * 2;
+            const duration = 1 + Math.random() * 3;
+            
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${x}%`;
+            star.style.top = `${y}%`;
+            star.style.animationDelay = `${delay}s`;
+            star.style.animationDuration = `${duration}s`;
+            
+            starsContainer.appendChild(star);
+        }
+        
+        // Перенаправление
         setTimeout(() => {
-            window.location.href = "https://discord.com/invite/gavwVwNNDC";
-        }, 1000);
+            window.location.href = "https://discord.gg/gavwVwNNDC";
+        }, 3000);
     </script>
 </body>
 </html>
