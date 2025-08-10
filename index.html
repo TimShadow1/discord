@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Redirecting to Discord</title>
+    <title>TimShadow | Discord</title>
     <style>
         body {
             margin: 0;
@@ -28,18 +28,37 @@
             padding: 30px;
             border-radius: 15px;
             backdrop-filter: blur(5px);
+            animation: textGlow 2s infinite alternate;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        a {
+            color: #4fc3f7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        @keyframes textGlow {
+            from { text-shadow: 0 0 5px #fff; }
+            to { text-shadow: 0 0 15px #4fc3f7; }
         }
     </style>
 </head>
 <body>
     <div class="message">
-        <h1>Redirecting to Discord Server...</h1>
-        <p>If you are not redirected, <a href="https://discord.com/invite/gavwVwNNDC" style="color: #4fc3f7">click here</a>.</p>
+        <h1>Wait 1 second...</h1>
+        <p>We're redirecting you to my <b>Discord server</b>!</p>
+        <p>If nothing happens, <a href="https://discord.com/invite/gavwVwNNDC">CLICK HERE</a>.</p>
     </div>
     
     <script>
         setTimeout(() => {
-            window.location.href = "https://discord.com/invite/gavwVwNNDC"; // Прямая ссылка на Discord
+            window.location.href = "https://discord.com/invite/gavwVwNNDC";
         }, 1000);
     </script>
 </body>
